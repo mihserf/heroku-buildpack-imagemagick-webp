@@ -3,8 +3,9 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 
+DIR="imagemagick-webp"
 VENDOR_DIR="$BUILD_DIR/vendor"
-INSTALL_DIR="$VENDOR_DIR/imagemagick-webp"
+INSTALL_DIR="$VENDOR_DIR/$DIR"
 CACHE_FILE="$CACHE_DIR/imagemagick-webp.tar.xz"
 
 mkdir -p $CACHE_DIR
@@ -114,6 +115,7 @@ fi
 # update PATH and LD_LIBRARY_PATH
 
 echo "-----> Updating environment variables"
+ln -s $INSTALL_DIR /app/vendor/$DIR
 PROFILE_PATH="$BUILD_DIR/.profile.d/imagemagick-webp.sh"
 ACTUAL_INSTALL_PATH="$HOME/vendor/imagemagick-webp"
 mkdir -p $(dirname $PROFILE_PATH)
